@@ -1,0 +1,36 @@
+<div class="grid">
+  <div class="login__container">
+      <div class="login__left">
+        <form #loginForm="ngForm" (ngSubmit)="submit(loginForm)">
+          <p class="login__title">
+              ĐĂNG NHẬP
+          </p>
+          <input type="text" id="username" name="username" class="login__input" placeholder="Email" ngModel>
+          <input type="password" id="password" name="password" class="login__input" placeholder="Password" ngModel>
+          <div class="login__button">
+              <button type="submit" class="login__button-login button">
+                  Đăng Nhập
+              </button>
+          </div>
+        </form>
+      </div>
+      <div class="login__right">
+
+          <img src="../../assets/svg/Logo.svg" alt="" class="login__img">
+
+          <p class="login__slogan--1">
+              GIA NHẬP CÙNG CHÚNG TÔI
+          </p>
+          <p class="login__slogan--2">
+              Nhanh chóng
+          </p>
+          <p class="login__slogan--2">
+              Tiện lợi
+          </p>
+          <p class="login__slogan--2">
+              và An toàn
+          </p>
+      </div>
+  </div>
+</div>
+
