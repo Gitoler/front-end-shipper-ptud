@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       const user = (<any>response).user;
       console.log(user);
       this.auth.saveUser(user);
-      this.router.navigate(['profile']);
+      this.router.navigate(['manage/shipper']);
     }, err =>
     {
       this.invalidAccount = true;
