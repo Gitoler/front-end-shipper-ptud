@@ -33,31 +33,27 @@ import { MatIconModule } from '@angular/material/icon';
 //Component
 import { SpinnerComponent } from './share/spinner/spinner.component';
 import { AppComponent } from './app.component';
-import { StatisticComponent } from './components/statistic/statistic.component';
-import { InvoiceComponent } from './components/invoice/invoice.component';
 import { OrderComponent } from './components/order/order.component';
 import { AppRoutingModule } from './app-routing.module';
 import { OrderRowComponent } from './components/order/order--row/order--row.component';
-import { CheckoutComponent } from './components/checkout/checkout.component';
-import { FortestComponent } from './components/fortest/fortest.component';
-import { StoreComponent } from './components/store/store.component';
-import { StoreCertificationComponent } from './components/store-certification/store-certification.component';
 import { SideboardComponent } from './share/sideboard/sideboard.component';
 import { HeaderStoreComponent } from './share/header-store/header-store.component';
-import { ListStoreComponent } from './components/list-store/list-store.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { InvoiceOfStoreComponent } from './components/invoice-of-store/invoice-of-store.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { ProfileComponent } from './components/profile/profile.component'
+import { ShipperProfileComponent } from './components/shipper-profile/shipper-profile.component';
+import { ShipperComponent } from './components/shipper/shipper.component';
+import { ShipperVerifyComponent } from './components/shipper-verify/shipper-verify.component';
+import { ShipperReceiverComponent } from './components/shipper-receiver/shipper-receiver.component';
+import { ShipperPasswordComponent } from './components/shipper-password/shipper-password.component';
+import { ShipperShippingComponent } from './components/shipper-shipping/shipper-shipping.component';
+import { ShipperIncomeComponent } from './components/shipper-income/shipper-income.component';
 
 // Service
 import { AuthService } from './share/auth/auth.service';
 import { AuthGuard } from './auth.guard';
 import { HeaderComponent } from './share/header/header.component';
 import { FooterComponent } from './share/footer/footer.component';
-import { FindShipperComponent } from './components/find-shipper/find-shipper.component';
-import { InvoiceDetailComponent } from './components/invoice-detail/invoice-detail.component';
 
 export function tokenGetter() {
   return localStorage.getItem("contact-manager-jwt");
@@ -65,26 +61,22 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    StatisticComponent,
     SpinnerComponent,
-    InvoiceComponent,
     OrderComponent,
     OrderRowComponent,
-    CheckoutComponent,
-    FortestComponent,
-    StoreComponent,
-    StoreCertificationComponent,
     SideboardComponent,
     HeaderStoreComponent,
-    ListStoreComponent,
-    InvoiceOfStoreComponent,
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
     FooterComponent,
-    ProfileComponent,
-    FindShipperComponent,
-    InvoiceDetailComponent
+    ShipperProfileComponent,
+    ShipperComponent,
+    ShipperVerifyComponent,
+    ShipperReceiverComponent,
+    ShipperPasswordComponent,
+    ShipperShippingComponent,
+    ShipperIncomeComponent
   ],
   imports: [
     AppRoutingModule,

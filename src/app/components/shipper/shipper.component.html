@@ -1,0 +1,41 @@
+<div class="store container">
+  <div class="row">
+    <div class="col-3">
+      <div class="store-sideboard">
+        <app-sideboard [routes]="routes" [sideboardName]="sideboardName"></app-sideboard>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="store-content">
+        <div class="store-content__header">
+          <h4>{{ activePage }}</h4>
+        </div>
+        <div class="store-content__item">
+          <div [ngSwitch]="activePage">
+            <div *ngSwitchCase="itemPage[0]">
+              <app-shipper-profile></app-shipper-profile>
+            </div>
+            <div *ngSwitchCase="itemPage[1]">
+              <app-shipper-verify></app-shipper-verify>
+            </div>
+            <div *ngSwitchCase="itemPage[2]">
+              <app-shipper-receiver></app-shipper-receiver>
+            </div>
+            <div *ngSwitchCase="itemPage[3]">
+              <app-shipper-shipping></app-shipper-shipping>
+            </div>
+            <div *ngSwitchCase="itemPage[4]">
+              <app-shipper-income></app-shipper-income>
+            </div>
+            <div *ngSwitchCase="itemPage[5]">
+              <app-shipper-password></app-shipper-password>
+            </div>
+            <div *ngSwitchDefault>
+              <app-shipper-profile></app-shipper-profile>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
