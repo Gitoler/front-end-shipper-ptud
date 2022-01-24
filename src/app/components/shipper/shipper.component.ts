@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NAVIGATION } from '../../constants/variables.contants';
 import { ListenerService } from '../../services/listener.service';
 import { ROUTES } from './shipper.constant';
+import { AuthService } from "../../share/auth/auth.service"
 
 
 @Component({
@@ -15,14 +16,21 @@ export class ShipperComponent implements OnInit {
   sideboardName = "Quản lý Shipper"
   activePage = '';
   status = 1;
+  user: any;
 
-  constructor(private listenerService: ListenerService) { }
+  constructor(private listenerService: ListenerService, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.activePage = 'Thông tin cá nhân';
     this.listenerService.status.subscribe(data => {
       this.status = data;
     })
+    this.user = this.auth.getUser();
+    if (this.user.trangThaiHoatDong == 1) {
+      this.status = 1;
+    } else {
+      this.status = 0;
+    }
     this.getPage();
   }
 

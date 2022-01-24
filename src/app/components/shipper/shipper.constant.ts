@@ -31,7 +31,7 @@ const ROUTES: RouteInfo[] = [
   },
   {
     path: '/manage/shipper/income',
-    title: 'Thu nhập',
+    title: 'Danh sách đơn hàng',
     icon: 'paid',
     class: '',
   },
