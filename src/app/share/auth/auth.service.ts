@@ -45,8 +45,10 @@ export class AuthService {
   }
 
   saveUser(user: any): void {
+    console.log(this.getUser())
     localStorage.removeItem(this.userKey);
     localStorage.setItem(this.userKey, JSON.stringify(user));
+    console.log(this.getUser())
     this.loggedIn.next(this.getToken() !== null);
     this.unLoggedIn.next(this.getToken() == null);
   }

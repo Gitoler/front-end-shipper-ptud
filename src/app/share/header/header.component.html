@@ -5,8 +5,8 @@
         </a>
     </div>
     <span>
-    <a routerLink="/homepage"></a>
-  </span>
+        <a routerLink="/homepage"></a>
+    </span>
     <span class="spacer"></span>
 
     <!-- <div class="header-partner">
@@ -27,7 +27,7 @@
         <a mat-button routerLink="/register">Đăng Ký </a>
     </div>
     <div class="header-register" *ngIf="isLoggedIn$ | async as isLoggedIn">
-        <a mat-button routerLink="/invoice">Hoạt động </a>
+        <button mat-button style="color: green" (click)="changeStatus()">{{stringStatus}} </button>
     </div>
     <div class="space"></div>
     <div class="header-login" *ngIf="isUnLoggedIn$ | async as isUnLoggedIn">

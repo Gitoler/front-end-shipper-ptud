@@ -52,6 +52,21 @@ declare interface Product {
   donviTinh: string;
 }
 
+declare interface Invoice {
+  id: string;
+  tinhTrang: string;
+  thoiGianDat: Date;
+  nguoiMua: string;
+  phuongThucThanhToan: string;
+  cuaHang: string;
+  shipper: string;
+  danhGiaCuaKH: number;
+  danhGiaCuaNhaCC: number;
+  tongTien: number;
+  khDanhGiaShipper: number;
+  tinhTrangCu: string;
+}
+
 declare interface ProductOfStore {
   store: Store;
   products: Product[];
@@ -75,4 +90,6 @@ declare interface TiemNgua {
   tenVacxin: string;
 }
 
-export { Store, Location, Product, ProductOfStore, Shipper, NearestShipper };
+export { Store, Location, Product, ProductOfStore, Shipper, NearestShipper, Invoice };
+
+

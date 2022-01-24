@@ -9,7 +9,7 @@ import { Shipper } from '../interfaces/interfaces';
 export class ShipperService {
   private readonly apiURL = 'https://localhost:44349/api/shipper';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getShipperById(id: string): Observable<Shipper> {
     return this.http.get<Shipper>(this.apiURL + `/${id}`);
@@ -18,4 +18,9 @@ export class ShipperService {
   getAllShipper(): Observable<Shipper[]> {
     return this.http.get<Shipper[]>(this.apiURL);
   }
+
+  changeStatus(status: number, id: string): Observable<Shipper> {
+    return this.http.post<Shipper>(this.apiURL + "/update/" + id, { trangThaiHoatDong: status });
+  }
+
 }
