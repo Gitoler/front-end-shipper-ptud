@@ -39,7 +39,17 @@ export class DeliRequestService {
   }
   UpdateInvoiceById(id: string, shipper: string): Observable<any> {
     return this.httpClient.post(
-      `https://localhost:44349/api/donhang/${id}`, { shipper: "61b76361241874f48b599885" }
+      `https://localhost:44349/api/donhang/${id}`, { shipper: shipper }
+    );
+  }
+  UpdateInvoiceSuccessById(id: string, shipper: string): Observable<any> {
+    return this.httpClient.post(
+      `https://localhost:44349/api/donhang/success/${id}`, { shipper: shipper }
+    );
+  }
+  UpdateInvoiceFailById(id: string, shipper: string): Observable<any> {
+    return this.httpClient.post(
+      `https://localhost:44349/api/donhang/fail/${id}`, { shipper: shipper }
     );
   }
 
