@@ -25,6 +25,9 @@
                     </div>
                 </div>
             </div>
+            <div *ngFor="let id of ids, let invoice of invoices">
+                {{ids.id}}
+            </div>
 
 
             <div class="list_shipper-table">
@@ -38,7 +41,33 @@
                             <th scope="col"></th>
                         </tr>
                     </thead>
+                    <tbody *ngIf="shipperStatus==1">
+                        <tr *ngFor="let invoice of invoiceWithDistance">
+                            <td *ngIf="invoice.trangthai==='Chưa nhận'">{{invoice.id}}</td>
+                            <td *ngIf="invoice.trangthai==='Chưa nhận'">{{invoice.khoangcach}} Km</td>
+                            <td *ngIf="invoice.trangthai==='Chưa nhận'">{{invoice.tongTien}} vnđ</td>
+                            <td>
+                                Chưa nhận
+                            </td>
+                        </tr>
+                        <tr *ngFor="let invoice of invoiceWithDistanceDone">
+                            <td>{{invoice.id}}</td>
+                            <td>{{invoice.khoangcach}} Km</td>
+                            <td>{{invoice.tongTien}} vnđ</td>
+                            <td>
+                                <button *ngIf="invoice.trangthai==='Chưa nhận'" class="btn btn-primary">
+                                    Nhận đơn
+                                </button>
+                                <div>{{invoice.trangthai}}</div>
+                            </td>
+                            <td>
+                                <button *ngIf="invoice.trangthai==='Chưa nhận'" class="btn btn-primary">
+                                    Từ chối
+                                </button>
+                            </td>
+                        </tr>
 
+                    </tbody>
                 </table>
             </div>
         </div>

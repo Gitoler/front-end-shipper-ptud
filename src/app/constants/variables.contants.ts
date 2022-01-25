@@ -20,7 +20,7 @@ const NAVIGATION = [
   'Xác thực người dùng',
   'Tiếp nhận đơn hàng',
   'Vận đơn',
-  'Thu nhập',
+  'Danh sách đơn hàng',
   'Thay đổi mật khẩu',
 ];
 

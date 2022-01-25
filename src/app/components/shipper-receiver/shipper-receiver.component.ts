@@ -21,13 +21,16 @@ export class ShipperReceiverComponent implements OnInit {
   currentUser: any;
   shipperID = '';
   shipperStatus: any;
-
   getInvoiceList(shipperId: string) {
     this.deliRequest.GetListInvoiceByShipper(shipperId).subscribe(data => {
+      console.log("data")
+      console.log(data)
+      this.ids = []
       for (const iterator of data) {
         this.ids.push({ shippervandon: iterator._id, id: iterator.vandonid, khoangcach: iterator.khoangcach, trangthai: iterator.trangthai })
       }
       for (const iterator of this.ids) {
+        this.invoiceWithDistanceDone = []
         this.deliRequest.GetDetailInvoiceById(iterator.id).subscribe(data => {
           this.invoices.push(data);
           for (let iterator of this.ids) {
@@ -37,19 +40,14 @@ export class ShipperReceiverComponent implements OnInit {
               break;
             }
           }
-          for (let iterator of this.ids) {
-            if (data[0]?.id == iterator?.id && iterator.trangthai != "Chưa nhận") {
-              iterator.tongTien = data[0].tongTien.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-              this.invoiceWithDistanceDone.push(iterator)
-              break;
-            }
-          }
         })
       }
     })
   }
 
+
   changeShipperVanDonStatus(id: string, status: string, vandonid: string) {
+
     alert(status)
     this.deliRequest.ChangeShipperStatusById(id, status).subscribe(
       data => {
@@ -57,7 +55,6 @@ export class ShipperReceiverComponent implements OnInit {
         this.invoices = [];
         this.invoiceWithDistance = [];
         this.invoiceWithDistanceDone = [];
-        this.getInvoiceList(this.shipperID)
         this.getInvoiceById(vandonid)
         console.log(this.invoice)
         console.log("update ")
@@ -65,6 +62,7 @@ export class ShipperReceiverComponent implements OnInit {
         console.log(vandonid)
         console.log(this.invoice)
 
+        this.getInvoiceList(this.shipperID)
       }
     )
     this.deliRequest.ChangeShipperStatusesById(id, vandonid).subscribe(
@@ -76,7 +74,8 @@ export class ShipperReceiverComponent implements OnInit {
         this.getInvoiceList(this.shipperID)
       }
     )
-
+    console.log("this.ids")
+    console.log(this.ids)
 
   }
 

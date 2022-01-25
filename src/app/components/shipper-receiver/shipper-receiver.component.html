@@ -25,9 +25,6 @@
                     </div>
                 </div>
             </div>
-            <div *ngFor="let id of ids, let invoice of invoices">
-                {{ids.id}}
-            </div>
 
 
             <div class="list_shipper-table">
@@ -53,22 +50,6 @@
                             </td>
                             <td>
                                 <button (click)="changeShipperVanDonStatus(invoice.shippervandon,'Hủy nhận',invoice.id)" class="btn btn-primary">
-                                    Từ chối
-                                </button>
-                            </td>
-                        </tr>
-                        <tr *ngFor="let invoice of invoiceWithDistanceDone">
-                            <td>{{invoice.id}}</td>
-                            <td>{{invoice.khoangcach}} Km</td>
-                            <td>{{invoice.tongTien}} vnđ</td>
-                            <td>
-                                <button *ngIf="invoice.trangthai==='Chưa nhận'" class="btn btn-primary">
-                                    Nhận đơn
-                                </button>
-                                <div>{{invoice.trangthai}}</div>
-                            </td>
-                            <td>
-                                <button *ngIf="invoice.trangthai==='Chưa nhận'" class="btn btn-primary">
                                     Từ chối
                                 </button>
                             </td>
