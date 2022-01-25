@@ -23,4 +23,8 @@ export class ShipperService {
     return this.http.post<Shipper>(this.apiURL + "/update/" + id, { trangThaiHoatDong: status });
   }
 
+  uploadCus(cus: any): Observable<any> {
+    return this.http.put<any>(this.apiURL, cus);
+  }
+
 }

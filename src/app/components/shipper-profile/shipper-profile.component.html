@@ -1,40 +1,165 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="container shadow-lg p-3 mb-5 bg-white rounded">
+  <div class="py-5 text-center">
+    <h2>Thông tin tài khoản</h2>
+  </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="name">
-                    <p>Họ và tên: NTNM</p>
-                </div>
-                <div class="gioitinh">
-                    <p>Giới tính: Nam</p>
-                </div>
-                <div class="ngaysinh">
-                    <p>Ngày sinh: 10/11/2000</p>
-                </div>
-                <div class="email">
-                    <p>Email: nhatminhnt@mb.com</p>
-                </div>
-                <div class="daichi">
-                    <p>Địa chỉ: quận 4 thành phố NT</p>
-                </div>
+  <div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+      <div class="col-6">
+        <div class="store-certificate__item">
+          <h4 class="store-certificate__header">Avatar</h4>
+          <div class="store-certificate__image">
+            <img
+              [src]="
+                !currentUser?.hinhAnh
+                  ? 'assets/images/no-image.jpg'
+                  : currentUser?.hinhAnh
+              "
+              alt="Avatar"
+            />
+          </div>
+          <div class="store-certificate__form">
+            <input
+              #input2
+              type="file"
+              hidden="true"
+              accept=".jpg"
+              (change)="uploadFile2($event)"
+            />
+            <div class="store-certificate__form__info">
+              <progress-bar
+                *ngIf="startUpload2"
+                [color-degraded]="{
+                  '0': '#f12711',
+                  '10': '#f5af19',
+                  '20': '#FDC830',
+                  '30': '#FFF200',
+                  '40': '#ffff1c',
+                  '50': '#a8e063',
+                  '60': '#24FE41',
+                  '70': '#96c93d',
+                  '80': '#00F260',
+                  '90': '#56ab2f'
+                }"
+                progress="{{ uploadPercent2 }}"
+                [disable-percentage]="false"
+              ></progress-bar>
+              <button
+                class="store-certificate__button"
+                mat-flat-button
+                color="warn"
+                (click)="input2.click()"
+              >
+                Chọn ảnh khác
+              </button>
             </div>
-            <div class="col">
-                <div>
-                    <img src="http://www.thanhdoan.hochiminhcity.gov.vn/ThanhDoan/webtd/Content/news/2021/6/34448/1.jpg" alt="">
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
-</body>
 
-</html>
+    <div class="col-md-8 order-md-1">
+      <form [formGroup]="profileUser">
+        <div class="card">
+          <h5 class="card-header">Thông tin cá nhân</h5>
+          <div class="card-body">
+            <div class="row" style="width: 100%">
+              <div class="form-group col-6">
+                <div style="display: flex">
+                  <label for="fullName">Họ Và Tên </label>
+                </div>
+                <input
+                  type="text"
+                  formControlName="fullName"
+                  class="form-control mt-1"
+                  placeholder=""
+                  style="width: 100%"
+                />
+              </div>
+
+              <div class="form-group col-6">
+                <div style="display: flex">
+                  <label for="dateOfBirth">Ngày sinh </label>
+                </div>
+                <input
+                  type="text"
+                  formControlName="dateOfBirth"
+                  class="form-control mt-1"
+                  placeholder=""
+                  style="width: 100%"
+                />
+              </div>
+            </div>
+
+            <div class="row" style="width: 100%">
+              <div class="form-group col-6">
+                <div style="display: flex">
+                  <label for="sdt">Số điện thoại </label>
+                </div>
+                <input
+                  type="text"
+                  formControlName="sdt"
+                  class="form-control mt-1"
+                  placeholder=""
+                  style="width: 100%"
+                />
+              </div>
+
+              <div class="form-group col-6">
+                <div style="display: flex">
+                  <label for="gender">Giới tính </label>
+                </div>
+                <input
+                  type="text"
+                  formControlName="gender"
+                  class="form-control mt-1"
+                  placeholder=""
+                  style="width: 100%"
+                  [disabled]="true"
+                />
+              </div>
+            </div>
+
+            <div class="form-group mt-2">
+              <div style="display: flex">
+                <label for="address">Địa chỉ </label>
+              </div>
+              <input
+                type="text"
+                formControlName="address"
+                class="form-control mt-1"
+                style="width: 100%"
+              />
+            </div>
+            <div class="mt-3">
+              <mat-checkbox
+                class="checkbox"
+                color="primary"
+                (change)="ClickCheckbox()"
+                [checked]="isAgree"
+                style="text-align: left; display: block"
+                >Đồng ý chịu trách nhiệm với những thông tin đã cung
+                cấp</mat-checkbox
+              >
+            </div>
+            <button
+              [disabled]="!isActive || isRunning"
+              mat-raised-button
+              color="success"
+              class="store-certificate__upload"
+              (click)="uploadData()"
+            >
+              Cập nhập
+              <mat-spinner
+                *ngIf="isUploadSuccess"
+                style="margin-left: 8px"
+                [diameter]="20"
+                color="light"
+              ></mat-spinner>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
